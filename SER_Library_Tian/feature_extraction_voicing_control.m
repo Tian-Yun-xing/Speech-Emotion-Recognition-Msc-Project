@@ -1,10 +1,10 @@
-function [audio_feature,info_out]= feature_extraction_voicing(audio_in, info_in, aFE)        % A function can extract feature automatically
+function [audio_feature,info_out]= feature_extraction_voicing_control(pwrThreshold, freqThreshold, audio_in, info_in, aFE)        % A function can extract feature automatically
     audio_feature = extract(aFE,audio_in);
     audio_feature = num2cell(audio_feature);
     audio_feature(:,length(audio_feature(1,:))+1) = info_in.Label(1);                % put the emotion lable on
     
-    pwrThreshold = -50;     % Frames with power below this threshold (in dB) are likely to be silence
-    freqThreshold = 1000;   % Frames with zero crossing rate above this threshold (in Hz) are likely to be silence or unvoiced speech
+    %pwrThreshold = -50;     % Frames with power below this threshold (in dB) are likely to be silence
+    %freqThreshold = 1000;   % Frames with zero crossing rate above this threshold (in Hz) are likely to be silence or unvoiced speech
     
     %fs = 16000;
     fs = aFE.SampleRate;
